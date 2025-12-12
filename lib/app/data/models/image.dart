@@ -1,7 +1,9 @@
 
+import 'dart:typed_data';
+
 class Image {
     String name;
-    String path;
+    Uint8List path;
     String type;
     String date;
 
@@ -13,22 +15,15 @@ class Image {
     });
 
     factory Image.fromMap(Map<String, dynamic> map) {
-    return Image(
-      name: map["name"],
+      return Image(
+        name: map["name"],
         path: map["path"],
         type: map["type"],
         date: map["date"],
-    );
-  }
+      );
+    }
 
-    factory Image.fromJson(Map<String, dynamic> json) => Image(
-        name: json["name"],
-        path: json["path"],
-        type: json["type"],
-        date: json["date"],
-    );
-
-    Map<String, String> toMap() => {
+    Map<String, dynamic> toMap() => {
         "name": name,
         "path": path,
         "type": type,

@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gallery_x/app/modules/gallery/views/photo_view.dart';
@@ -31,11 +30,11 @@ class GalleryView extends GetView<GalleryController> {
                     onTap: () {
                       Get.to(
                         PhotoViewer(
-                          file: File(controller.imageList[index].path),
+                          file: controller.imageList[index].path,
                         ),
                       );
                     },
-                    child: Image.file(File(controller.imageList[index].path)),
+                    child: Image.memory(controller.imageList[index].path),
                   );
                 } /*Image.network(imageList[index], fit: BoxFit.cover)*/,
               );

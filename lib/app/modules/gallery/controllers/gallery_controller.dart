@@ -4,25 +4,10 @@ import 'package:get/get.dart';
 
 class GalleryController extends GetxController {
   ImagesDao dao = ImagesDao();
-  //TODO: Implement GalleryController
 
   RxList<Image> imageList = <Image>[].obs;
 
-  @override
-  void onInit() async {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
+  
   void getImageList() async {
     imageList.clear();
     imageList.addAll(await dao.getAllImages());

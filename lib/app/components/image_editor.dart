@@ -17,17 +17,18 @@ class ImageEditor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Image image = Image(
-      name: file.name,
-      path: file.path,
-      type: 'jpg',
-      date: DateTime.now().toString(),
-    );
+  late Image image; 
     return ProImageEditor.file(
       File(file.path),
       callbacks: ProImageEditorCallbacks(
         //fix this as no editing done on the image takes place
         onImageEditingComplete: (bytes) async {
+          image = Image(
+            name: file.name,
+            path: bytes,
+            type: 'jpg',
+            date: DateTime.now().toString(),
+          );
           await dao.postImage(image);
           controller.getImageList();
           Get.back();

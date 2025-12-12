@@ -5,7 +5,7 @@ import 'package:gallery_x/app/modules/upload/views/upload_view.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+ 
 
   RxInt currentScreenIndex = 0.obs;
 
@@ -18,20 +18,7 @@ class HomeController extends GetxController {
   List<Widget> screens = [GalleryView(),UploadView(),SettingsView()];
 
   final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  
 
   void increment() => count.value++;
 }
