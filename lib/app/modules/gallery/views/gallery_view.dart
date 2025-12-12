@@ -1,0 +1,45 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:gallery_x/app/modules/gallery/views/photo_view.dart';
+
+import 'package:get/get.dart';
+
+import '../controllers/gallery_controller.dart';
+
+class GalleryView extends GetView<GalleryController> {
+  const GalleryView({super.key});
+
+  @override
+  GalleryController get controller => Get.put(GalleryController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Obx(() {
+        return (controller.imageList.isEmpty)
+            ? Center(child: Text('Uploaded images will be shown here',style: TextStyle(fontSize: 24),))
+            : GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 5,
+                  mainAxisSpacing: 2,
+                  crossAxisSpacing: 2,
+                ),
+                itemCount: controller.imageList.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Get.to(
+                        PhotoViewer(
+                          file: File(controller.imageList[index].path),
+                        ),
+                      );
+                    },
+                    child: Image.file(File(controller.imageList[index].path)),
+                  );
+                } /*Image.network(imageList[index], fit: BoxFit.cover)*/,
+              );
+      }),
+    );
+  }
+}
