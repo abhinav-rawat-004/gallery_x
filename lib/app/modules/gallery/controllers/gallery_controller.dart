@@ -7,7 +7,13 @@ class GalleryController extends GetxController {
 
   RxList<Image> imageList = <Image>[].obs;
 
-  
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    getImageList();
+  }
+
   void getImageList() async {
     imageList.clear();
     imageList.addAll(await dao.getAllImages());

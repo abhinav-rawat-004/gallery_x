@@ -18,13 +18,14 @@ class UploadView extends GetView<UploadController> {
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: 10,
           children: [
-            Text('Want to edit the image? Upload file below'),
+            Text('Want to edit the image? Upload file below', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
             MaterialButton(
-              color: Colors.green[700],
+              color: Theme.of(context).primaryColor,
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical:8),
               onPressed: () {
                 controller.pickImage();
               },
-              child: Text('Upload'),
+              child: Text('Upload', style: TextStyle(color: Colors.white,fontSize: 18, fontWeight: FontWeight.bold )),
             ),
           ],
         ),

@@ -14,7 +14,7 @@ class ImagesDao {
   //Operations
   Future<List<Image>> getAllImages() async {
     //finder
-    final finder = Finder(sortOrders: [SortOrder('date')]);
+    final finder = Finder(sortOrders: [SortOrder('date',false)]);
     //operation
     final data = await _imageStore.find(await _db, finder: finder);
     //return

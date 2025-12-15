@@ -38,36 +38,5 @@ class ImageEditor extends StatelessWidget {
         },
       ),
     );
-
-    // return ProImageEditor.network(
-    //   'https://picsum.photos/id/237/2000',
-    //   callbacks: ProImageEditorCallbacks(
-    //     onImageEditingComplete: (Uint8List bytes) async {
-    //       await Get.defaultDialog(title: 'hello');
-    //       /*
-    //         Your code to process the edited image, such as uploading it to your server.
-    //         until
-
-    //         You can choose to use await to keep the loading dialog visible until
-    //         your code completes, or run it without async to close the loading dialog immediately.
-
-    //         By default, the image bytes are in JPG format.
-    //       */
-    //       Get.back();
-    //     },
-    //     /*
-    //       Optional: If you want haptic feedback when a line is hit, similar to WhatsApp,
-    //       you can use the code below along with the vibration package.
-
-    //         mainEditorCallbacks: MainEditorCallbacks(
-    //           helperLines: HelperLinesCallbacks(
-    //             onLineHit: () {
-    //               Vibration.vibrate(duration: 3);
-    //             }
-    //           ),
-    //         ),
-    //       */
-    //   ),
-    // );
   }
 }
