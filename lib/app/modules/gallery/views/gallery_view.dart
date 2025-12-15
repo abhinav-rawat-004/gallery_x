@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gallery_x/app/modules/gallery/views/photo_view.dart';
-
 import 'package:get/get.dart';
-
-import '../../../../main.dart';
 import '../controllers/gallery_controller.dart';
 
 class GalleryView extends GetView<GalleryController> {
@@ -45,12 +42,6 @@ class GalleryView extends GetView<GalleryController> {
                 } /*Image.network(imageList[index], fit: BoxFit.cover)*/,
               );
       }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Controller controller = Get.find<Controller>();
-          controller.changeTheme(!controller.isDark);
-        },
-      ),
     );
   }
 }

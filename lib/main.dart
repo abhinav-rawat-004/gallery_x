@@ -11,24 +11,48 @@ void main() async {
   runApp(MyApp());
 }
 
-class Controller extends GetxController {
-  final app = GetStorage();
-  bool get isDark => app.read('darkmode') ?? false;
-  ThemeData get theme => isDark ? MyTheme.dark : MyTheme.light;
-  void changeTheme(bool val) => app.write('darkmode', val);
+class AppController extends GetxController {
+  final storage = GetStorage();
+  RxBool isDark = false.obs;
+
+  Rx<ThemeData> appTheme = ThemeData.light().obs;
+
+  @override
+  void onInit() async {
+    super.onInit();
+    await changeAppTheme();
+  }
+
+  Future setAppTheme(ThemeData val) async {
+    await storage.write('theme', val);
+    await changeAppTheme();
+  }
+
+  Future<ThemeData> getAppTheme() async {
+    return await storage.read('theme') ?? MyTheme.light();
+  }
+
+  Future changeAppTheme() async {
+    ThemeData themeData = await getAppTheme();
+    appTheme(themeData);
+  }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends GetView<AppController> {
   const MyApp({super.key});
 
   @override
+  AppController get controller => Get.put(AppController());
+
+  @override
   Widget build(BuildContext context) {
-    final controller = Get.put(Controller());
-    return GetMaterialApp(
-      title: "GalleryX",
-      theme: controller.theme,
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
+    return Obx(
+      () => GetMaterialApp(
+        title: "GalleryX",
+        theme: controller.appTheme(),
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.routes,
+      ),
     );
   }
 }
