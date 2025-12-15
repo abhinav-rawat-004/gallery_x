@@ -31,7 +31,7 @@ class GalleryView extends GetView<GalleryController> {
                   return GestureDetector(
                     onTap: () {
                       Get.to(
-                        PhotoViewer(file: controller.imageList[index].path),
+                        PhotoViewer(file: controller.imageList[index]),
                       );
                     },
                     child: Image.memory(
