@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gallery_x/app/theme.dart';
-import 'package:gallery_x/main.dart';
 import 'package:get/get.dart';
+
 import '../controllers/settings_controller.dart';
 
 class SettingsView extends GetView<SettingsController> {
@@ -20,20 +19,7 @@ class SettingsView extends GetView<SettingsController> {
             child: ListView.builder(
               itemCount: 1,
               itemBuilder: (context, index) => GestureDetector(
-                onTap: () async {
-                  AppController appController = Get.find<AppController>();
-                  try {
-                    if (appController.isDark()) {
-                      appController.setAppTheme(MyTheme.light());
-                      appController.isDark(false);
-                    } else {
-                      appController.setAppTheme(MyTheme.dark());
-                      appController.isDark(true);
-                    }
-                  } catch (error) {
-                    print(error);
-                  }
-                },
+                onTap: () => controller.toggleTheme(),
                 child: ListTile(title: Text('Theme $index ')),
               ),
             ),

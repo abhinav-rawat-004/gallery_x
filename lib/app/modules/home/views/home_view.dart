@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
@@ -17,11 +16,9 @@ class HomeView extends GetView<HomeController> {
         () => BottomNavigationBar(
           currentIndex: controller.currentScreenIndex(),
           items: controller.bottomNavBarItems,
-          onTap: (value) => controller.currentScreenIndex(value),
+          onTap: (value) => controller.changeTab(value),
         ),
       ),
     );
   }
 }
-
-
